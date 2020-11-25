@@ -1,0 +1,218 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Sevicios {% endblock titulo%} {% block container %}
+<!-- slider Area Start-->
+<div class="slider-area">
+  <!-- Mobile Menu -->
+  <div
+    class="single-slider slider-height2 d-flex align-items-center"
+    data-background="{% static 'assets/img/hero/banerp.jpg' %}"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2>Productos</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider Area End-->
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center pb-5 mb-3">
+      <div class="col-md-7 heading-section text-center ftco-animate">
+        <!-- <span class="subheading">Productos</span> -->
+        <h2 style="margin-top: 2em">Nuestros Productos</h2>
+      </div>
+    </div>
+    <div class="row">
+      {% for post in posts %}
+
+      <div class="col-md-4 services ftco-animate">
+        {% if request.user.is_authenticated %}
+        <div class="btn-group">
+          <i
+            class="fas fa-ellipsis-h"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          ></i>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{%  url 'editar-sercivio' post.id %}"
+              >Editar Producto</a
+            >
+            <div class="dropdown-divider"></div>
+            <a
+              class="dropdown-item"
+              href="{%  url 'eliminar-sercivio' post.id %}"
+              >Eliminar Producto</a
+            >
+          </div>
+        </div>
+
+        {% endif %}
+
+        <div class="d-block d-flex">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="flaticon-roof"
+              ><img src="{{post.image.url}}" alt=""
+            /></span>
+          </div>
+          <div class="media-body pl-3">
+            <h3 class="heading">{{post.name}}</h3>
+            <p>{{post.description}}</p>
+            <p>
+              <a href="{% url 'post-sercivio' post.id %}" class="btn-custom"
+                >ver mas</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Completed Cases Start -->
+<div class="completed-cases section-padding3">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- slider Heading -->
+      <div class="col-xl-4 col-lg-4 col-md-8">
+        <div class="single-cases-info mb-30">
+          <h3>Servicios</h3>
+          <p>
+            Realiza los pagos y transacciones que necesitas <b style="color: #506172;">en un solo lugar...</b> 
+          </p>
+          <!-- <a href="gallery.html" class="border-btn border-btn2">See more</a> -->
+        </div>
+      </div>
+      <!-- OwL -->
+      <div class="col-xl-8 col-lg-8 col-md-col-md-7">
+        <div class="completed-active owl-carousel">
+          <div class="single-cases-img">
+            <img
+              src="{% static 'assets/img/service/desesperado.jpg' %}"
+              alt=""
+              style="width: 457px; height: 575"
+            />
+            <!-- img hover caption -->
+            <div class="single-cases-cap">
+              <h4><a href="">Pago de luz</a></h4>
+              <p>
+                Contamos con pagos del servicios basico de energia electrica. 
+              </p>
+            </div>
+          </div>
+          <div class="single-cases-img">
+            <img
+              src="{% static 'assets/img/team/ecolar.jpg' %}"
+              alt=""
+              style="width: 457px; height: 575"
+            />
+            <!-- img hover caption -->
+            <div class="single-cases-cap">
+              <h4>
+                <a href="">Otros Servicios</a>
+              </h4>
+              <p>
+                pagos de servicios como: Cnt, DIRECTV, TVCABLE, SRI, IESS, CLARO, Movistar, tuenti, AVON YANBAL, entre otros. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Completed Cases end -->
+
+<style>
+  .hero-wrap .slider-text .subheading {
+    font-size: 15px;
+    color: #f9b234;
+    text-transform: uppercase;
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .heading-section .subheading {
+    font-size: 12px;
+    display: block;
+    font-weight: 700;
+    color: #f9b234;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .heading-section.heading-section-white .subheading {
+    color: #000000;
+  }
+
+  .services {
+    display: block;
+    width: 100%;
+    position: relative;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .services .d-block {
+    margin-bottom: 20px;
+  }
+  .services .icon {
+    line-height: 1.3;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+    border-radius: 50%;
+    background: #f9b234;
+    -webkit-box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+  }
+  .services .icon span {
+    font-size: 40px;
+    color: #fff;
+  }
+  .services .media-body h3 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #000000;
+  }
+  .services .btn-custom {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000000;
+    border-bottom: 2px solid #e6e6e6;
+  }
+  .services .btn-custom:hover {
+    color: #f9b234;
+    border-color: #f9b234;
+  }
+
+  .services-2 {
+    margin: 0;
+    padding: 0;
+  }
+  .services-2 li {
+    list-style: none;
+  }
+  .services-2 li span {
+    color: #f9b234;
+    margin-right: 20px;
+  }
+</style>
+{% endblock container %}

@@ -1,0 +1,147 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Noticias {% endblock titulo%} 
+{% load crispy_forms_tags %}
+{% block container %}
+
+<!-- slider Area Start-->
+<div class="slider-area">
+    <!-- Mobile Menu -->
+    <div
+      class="single-slider slider-height2 d-flex align-items-center"
+      data-background="{% static 'assets/img/hero/banerp.jpg' %}"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2 >Noticias</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+
+  <section class="blog_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    {% for post in posts %}
+                    <article class="row blog_item">
+                        <div class="col-md-3">
+                            <div class="blog_info text-right" >
+                                
+                                <ul class="blog_meta list" style="margin-top: 4em;">
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#" style="color: #012f5f;">{{post.name}}&nbsp;<i class="ti-user"></i></a></li>
+                                    <li><a href="#" style="color: #012f5f;">{{post.date}}&nbsp;<i class="ti-calendar"></i></a></li>
+                                    {% if request.user.is_authenticated %} 
+                                        <li><a href="{% url 'editar-noticia' post.id %}"" style="color: #012f5f;">Editar &nbsp;<i class="far fa-edit"></i></a></li>
+                                        <li><a href="{% url 'eliminar-noticia' post.id %}" style="color: #012f5f;">Eliminar &nbsp;<i class="fas fa-trash-alt"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="blog_post">
+                                
+                                <div class="blog_details">
+                                    <a href="{% url 'post-noticia' post.id %}">
+                                        
+                                    </a>
+                                    <h2>{{post.description}}</h2>
+                                    <p>
+                                        {{post.body|safe}}
+                                    </p>
+                                    <a href="{% url 'post-noticia' post.id %}" class="blog_btn">Leer mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                    
+                    
+                    <div class="row" style="justify-content: center; margin-bottom: 3em;">
+		
+                        {% if posts.has_other_pages %}
+                
+                            <ul class="pagination">
+                
+                                {% if posts.has_previous %}
+                                    <li class="page-item"><a data-page="{{posts.previous_page_number}}" href="?page={{posts.previous_page_number}}" class="page-link">&laquo</a></li>
+                
+                                    <li class="page-item"><a data-page="1" href="?page=1" class="page-link">Primero</a></li>
+                                {% endif %}
+                
+                
+                                {% for i in posts.paginator.page_range %}
+                                    {% if posts.number == i %}
+                                        <li class="page-item"><a class="active page-link">{{i}}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a data-page="{{i}}" href="?page={{i}}" class="page-link">{{i}}</a></li>
+                                    {% endif %}
+                                    
+                                {% endfor %}
+                
+                
+                                {% if posts.has_next %}
+                                    <li class="page-item"><a data-page="{{posts.paginator.num_pages}}" href="?page={{posts.paginator.num_pages}}" class="page-link">Ultimo</a></li>
+                
+                                    <li class="page-item"><a data-page="{{posts.next_page_number}}" href="?page={{posts.next_page_number}}" class="page-link">&raquo</a></li>
+                                {% endif %}
+                            </ul>
+                
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <div class="input-group">
+                            <form id="searchForm" method="GET">
+                                {{myFilter.form|crispy}}
+                                <input class="btn btn-primary" type="submit" value="search">
+                            </form>
+                        </div><!-- /input-group -->
+                        <div class="br"></div>
+                    </aside>
+                    {% for novadades in posts %}
+                    <aside class="single_sidebar_widget author_widget">
+                        
+                        <p>{{novadades.novedad|safe}}</p>
+                        
+                    </aside>
+                    {% endfor %}
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================Blog Area =================-->
+<script type="text/javascript">
+	let searchForm = document.getElementById('searchForm')
+	let pageLinks = document.getElementsByClassName('page-link')
+
+	for(var i=0; pageLinks.length > i; i++){
+
+		pageLinks[i].addEventListener('click', function(e){
+			e.preventDefault()
+			let page = this.dataset.page
+			console.log('Page:', page)
+			searchForm.innerHTML += `<input value="${page}" name="page" hidden >`
+			searchForm.submit()
+		})
+
+	}
+</script>
+
+{% endblock container %}

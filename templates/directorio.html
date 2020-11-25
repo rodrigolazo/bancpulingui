@@ -1,0 +1,237 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Directorio {% endblock titulo%} {% block container %}
+<!-- slider Area Start-->
+<div class="slider-area">
+  <!-- Mobile Menu -->
+  <div
+    class="single-slider slider-height2 d-flex align-items-center"
+    data-background="{% static 'assets/img/hero/services_hero.jpg' %}"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2>Directorio</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider Area End-->
+
+<br /><br />
+<!--================ Start Trainers Area =================-->
+<section class="trainer_area section_gap_top">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="main_title">
+          <h2 class="mb-3">Nuestra Directiva</h2>
+          <p>La actual directiva vigente de nuestra Coperativa</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center d-flex align-items-center">
+      <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
+        <div class="thumb d-flex justify-content-sm-center">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/team/car.jpg'%}"
+            alt=""
+          />
+        </div>
+        <div class="meta-text text-sm-center">
+          <h4>Ing. Carlos Tacuri</h4>
+          <p class="designation">Gerente</p>
+          <div class="mb-4">
+            <p class="texto">
+              Ingeniero en contabilidad y auditoria que actuamente dirige la
+              Coperativa Pulingui
+            </p>
+          </div>
+          <div class="align-items-center justify-content-center d-flex">
+            <a href="https://www.facebook.com/carlos.tacuri.102" target="_blank"><i class="ti-facebook"></i></a>
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
+        <div class="thumb d-flex justify-content-sm-center">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/team/t4.jpg'%}"
+            alt=""
+          />
+        </div>
+        <div class="meta-text text-sm-center">
+          <h4>Ing. Carlos Tacuri</h4>
+          <p class="designation">Secretario</p>
+          <div class="mb-4">
+            <p class="texto">
+              Ingeniero en contabilidad y auditoria que actuamente dirige la
+              Coperativa Pulingui
+            </p>
+          </div>
+          <div class="align-items-center justify-content-center d-flex">
+            <a href="https://www.facebook.com/carlos.tacuri.102" target="_blank"><i class="ti-facebook"></i></a>
+       
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
+        <div class="thumb d-flex justify-content-sm-center">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/team/carlos.jpg'%}"
+            alt=""
+          />
+        </div>
+        <div class="meta-text text-sm-center">
+          <h4>Ing. Carlos Tacuri</h4>
+          <p class="designation">Presidente</p>
+          <div class="mb-4">
+            <p class="texto">
+              Ingeniero en contabilidad y auditoria que actuamente dirige la
+              Coperativa Pulingui
+            </p>
+          </div>
+          <div class="align-items-center justify-content-center d-flex">
+            <a href="#"><i class="ti-facebook"></i></a>
+            <a href="#"><i class="ti-twitter"></i></a>
+              <!-- <a href="#"><i class="ti-linkedin"></i></a>
+              <a href="#"><i class="ti-pinterest"></i></a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 single-trainer">
+        <div class="thumb d-flex justify-content-sm-center">
+          <img
+            class="img-fluid"
+            src="{% static 'assets/img/team/t3.jpg'%}"
+            alt=""
+          />
+        </div>
+        <div class="meta-text text-sm-center">
+          <h4>Ing. Carlos Tacuri</h4>
+          <p class="designation">Vocal 1</p>
+          <div class="mb-4">
+            <p class="texto">
+              Ingeniero en contabilidad y auditoria que actuamente dirige la
+              Coperativa Pulingui
+            </p>
+          </div>
+          <div class="align-items-center justify-content-center d-flex">
+            <a href="#"><i class="ti-facebook"></i></a>
+            <a href="#"><i class="ti-twitter"></i></a>
+              <!-- <a href="#"><i class="ti-linkedin"></i></a>
+              <a href="#"><i class="ti-pinterest"></i></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================ End Trainers Area =================-->
+
+<style>
+  .main_title {
+    text-align: center;
+    margin-bottom: 85px;
+  }
+  @media (max-width: 991px) {
+    .main_title {
+      margin-bottom: 40px;
+    }
+  }
+  .main_title h2 {
+    font-size: 36px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  @media (max-width: 575px) {
+    .main_title h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  }
+  .main_title p {
+    font-size: 16px;
+    margin-bottom: 0px;
+    font-style: italic;
+  }
+
+  .section_gap_top {
+    padding-top: 130px;
+  }
+  @media (max-width: 991px) {
+    .section_gap_top {
+      padding-top: 70px;
+    }
+  }
+
+  .trainer_area {
+    padding-bottom: 100px;
+  }
+  @media (max-width: 991px) {
+    .trainer_area {
+      padding-bottom: 40px;
+    }
+  }
+
+  .single-trainer {
+    margin-bottom: 30px;
+  }
+  .single-trainer .thumb {
+    position: relative;
+  }
+  .single-trainer .meta-text {
+    background: #f9f9ff;
+    padding: 20px 25px;
+    box-shadow: 0px 0px 30px rgba(42, 124, 49, 0.3);
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    background: #ffffff;
+  }
+  @media (max-width: 991px) {
+    .single-trainer .meta-text {
+      padding: 20px 20px;
+    }
+  }
+  .single-trainer .meta-text h4 {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+  .single-trainer .meta-text .designation {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  .single-trainer .meta-text a {
+    font-size: 14px;
+    margin: 0 10px;
+    color: #cccccc;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+  .single-trainer .meta-text a:hover {
+    color: #fdc632;
+  }
+  .single-trainer:hover .meta-text {
+    box-shadow: 0px 10px 30px rgba(0, 35, 71, 0.15);
+  }
+
+.texto{
+ text-align: justify;
+}
+</style>
+
+{% endblock container %}

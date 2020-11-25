@@ -1,0 +1,127 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Noticias {% endblock titulo%} {% block container %}
+
+<!-- slider Area Start-->
+<div class="slider-area">
+    <!-- Mobile Menu -->
+    <div
+      class="single-slider slider-height2 d-flex align-items-center"
+      data-background="{% static 'assets/img/hero/news.jpg' %}"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2 >Noticias</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+
+  <section class="blog_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    <article class="row blog_item">
+                        <div class="col-md-3">
+                            <div class="blog_info text-right">
+                                <div class="post_tag">
+                                    <a href="#">Food,</a>
+                                    <a class="active" href="#">Technology,</a>
+                                    <a href="#">Politics,</a>
+                                    <a href="#">Lifestyle</a>
+                                </div>
+                                <ul class="blog_meta list">
+                                    <li><a href="#">Mark wiens<i class="ti-user"></i></a></li>
+                                    <li><a href="#">12 Dec, 2017<i class="ti-calendar"></i></a></li>
+                                    <li><a href="#">1.2M Views<i class="ti-eye"></i></a></li>
+                                    <li><a href="#">06 Comments<i class="ti-comment"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="blog_post">
+                                <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
+                                <div class="blog_details">
+                                    <a href="single-blog.html">
+                                        <h2>Desembolso de $ 2.000 millones será empleado en el sector social</h2>
+                                    </a>
+                                    <p>Desembolso de $ 2.000 millones será empleado en el sector social
+
+                                        Esta noticia ha sido publicada originalmente por Diario EL TELÉGRAFO bajo la siguiente dirección: https://www.eltelegrafo.com.ec/noticias/economia/4/desembolso-millones-empleado-sector-social
+                                        Si va a hacer uso de la misma, por favor, cite nuestra fuente y coloque un enlace hacia la nota original. www.eltelegrafo.com.ec</p>
+                                        <blockquote class="twitter-tweet"><p lang="und" dir="ltr"><a href="https://t.co/OxmRcZ5nUZ">pic.twitter.com/OxmRcZ5nUZ</a></p>&mdash; Donald J. Trump (@realDonaldTrump) <a href="https://twitter.com/realDonaldTrump/status/1313267615083761665?ref_src=twsrc%5Etfw">October 5, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                    <a href="single-blog.html" class="blog_btn">leer mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    
+                    
+                    
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">
+                                        <i class="ti-angle-left"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a href="#" class="page-link">01</a></li>
+                            <li class="page-item active"><a href="#" class="page-link">02</a></li>
+                            <li class="page-item"><a href="#" class="page-link">03</a></li>
+                            <li class="page-item"><a href="#" class="page-link">04</a></li>
+                            <li class="page-item"><a href="#" class="page-link">09</a></li>
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">
+                                        <i class="ti-angle-right"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Posts">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
+                            </span>
+                        </div><!-- /input-group -->
+                        <div class="br"></div>
+                    </aside>
+                    <aside class="single_sidebar_widget author_widget">
+                        <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                        <h4>Novedades</h4>
+                        <p>informes</p>
+                        <div class="social_icon">
+                            <a href="#"><i class="ti-facebook"></i></a>
+                            <a href="#"><i class="ti-twitter"></i></a>
+                            <a href="#"><i class="ti-github"></i></a>
+                            <a href="#"><i class="ti-linkedin"></i></a>
+                        </div>
+                        <p>Noticias sobre Novedades tecnología: artículos, videos, fotos y el más completo archivo de noticias de Colombia y el mundo sobre Novedades tecnología.</p>
+                        <div class="br"></div>
+                    </aside>
+                    
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+
+{% endblock container %}

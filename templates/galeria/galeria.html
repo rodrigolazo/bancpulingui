@@ -1,0 +1,89 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Galeria {% endblock titulo%} {% block container %}
+<!-- slider Area Start-->
+<div class="slider-area">
+    <!-- Mobile Menu -->
+    <div
+      class="single-slider slider-height2 d-flex align-items-center"
+      data-background="{% static 'assets/img/hero/banerp.jpg' %}"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Galeria</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+
+<div class="div-imagen demonstrations">
+  {% for post in posts %}
+  {% if request.user.is_authenticated %}
+  <a class="" href="{% url 'editar-galeria' post.id %}"><i class="fa fa-edit" style="color: rgb(5, 37, 105);"></i></a>
+  <a class="" href="{% url 'eliminar-galeria' post.id %}" > <i class="fa fa-times" style="color: rgb(143, 5, 5);"></i></a>
+  {% endif %}       
+    <a
+        href="{{post.image.url}}"
+        class="fresco"
+        data-fresco-group="example"
+        data-fresco-caption="{{post.description}}"
+      >
+      
+        <img class="img desvanecer"  src="{{post.image.url}}" alt="" />
+      </a>
+   
+    {% endfor %}
+      
+  </div>
+
+
+
+
+<style>
+
+.div-imagen {
+  display:inline-block;
+  position:relative;
+}
+
+.div-imagen > div {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  padding:10px;
+  margin:0;
+}
+
+.desvanecer:hover {
+  opacity: 0.5;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 400ms;
+}
+
+
+
+.demonstrations{
+  margin-left: 14em;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+.img{
+  width: 25%;
+  height: auto;
+  
+}
+
+
+
+</style>
+
+{% endblock container %}

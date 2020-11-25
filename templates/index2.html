@@ -1,0 +1,506 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block titulo %}Banco Pulingui {% endblock titulo%} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/puli.png' %}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+            <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+            <link rel="stylesheet" href="{% static 'assets/css/dis.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/fresco.css' %}">
+     
+            <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}">
+
+            
+   </head>
+ 
+   <body>
+       
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/puli.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    
+    <main>
+    {% block container %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+      
+        <div class="carousel-inner">
+          {% for post in posts %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+            <img src="{{post.thumbnail.url}}" class="d-block w-100" alt="..." />
+      
+            <div class="card-i">
+              <div class="aticle">
+                {{post.sub_headline}}
+                <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s">
+                  <a href="{% url 'post-baner' post.id %}" class="btn hero-btn"
+                    >Conoce mas</a
+                  >
+                  {% if request.user.is_authenticated %}
+                  <div class="btn-group">
+                    <i
+                      class="fas fa-ellipsis-h"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    ></i>
+      
+                    <div class="dropdown-menu">
+                      <a
+                        class="dropdown-item"
+                        href="{%  url 'editar-baner' post.id %}"
+                        >Editar baner</a
+                      >
+                      <div class="dropdown-divider"></div>
+                      <a
+                        class="dropdown-item"
+                        href="{%  url 'eliminar-baner' post.id %}"
+                        >Eliminar baner</a
+                      >
+                    </div>
+                  </div>
+      
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      
+      <!-- Team-profile Start -->
+      <div class="team-profile team-padding">
+        <div class="container">
+          <div class="row">
+            {% for noticia in noticiaMain %}
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="single-profile mb-30">
+                <!-- Front -->
+                <div class="single-profile-front">
+                  <div class="profile-img">
+                    <img
+                      src="{{noticia.image.url}}"
+                      alt=""
+                    />
+                  </div>
+                  <div class="profile-caption">
+                    <h4><a href="{% url 'post-informacion' noticia.id %}">{{noticia.name}}</a></h4>
+                    <p>{{noticia.description}}</p>
+                      {% if request.user.is_authenticated %}
+                        <div class="btn-group" >
+                          <i
+                            class="fas fa-ellipsis-h"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          ></i>
+
+                          <div class="dropdown-menu">
+                            <a
+                              class="dropdown-item"
+                              href="{% url 'informacion-editar' noticia.id %}"
+                              >Editar Noticia</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a
+                              class="dropdown-item"
+                              href="{% url 'informacion-eliminar' noticia.id %}"
+                              >Eliminar Noticia</a
+                            >
+                          </div>
+                        </div>
+
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="single-profile mb-30">
+                <!-- Back -->
+                <div class="single-profile-back-last">
+                  <h2>Enterate de todos de nuestras noticias</h2>
+                  <p>Te informamos de nuetras actividades</p>
+                  <a href="{% url 'noticias' %}">Acceder »</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- We Trusted Start-->
+      <div class="we-trusted-area trusted-padding">
+        <div class="container">
+          <div class="row d-flex align-items-end">
+            <div class="col-xl-7 col-lg-7">
+              <div class="trusted-img">
+                <img src="{% static 'assets/img/team/logoss.jpg' %}" alt="" />
+              </div>
+            </div>
+            <div class="col-xl-5 col-lg-5">
+              <div class="trusted-caption">
+                <h2>¿ Quiénes Somos ?</h2>
+                <p>
+                  Somos un Banco comunal que ofrece productos y servicios 
+                  financieros que contribuyen a satisfacer las necesidades 
+                  de los socios, de la misma manera beneficiar en sus actividades 
+                  productivas para el desarrollo económico y social
+                </p>
+                <a href="{% url 'quienes-somos' %}" class="btn trusted-btn"
+                  >Mas Información</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  apartado de servicios -->
+      <div class="services-area section-padding2" style="margin-bottom: 0%">
+        <div class="container">
+          <!-- section tittle -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-tittle text-center">
+                <h2>Nuestros Productos</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-icon">
+                  <span class="fas fa-money-bill-wave"></span>
+                </div>
+                <div class="services-caption">
+                  <h4>Microcrédito</h4>
+                  <p>
+                    Apoyamos con micro créditos para iniciar y fortalecer su emprendimiento.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-icon">
+                  <span class="fas fa-piggy-bank"></span>
+                </div>
+                <div class="services-caption">
+                  <h4>Ahorro</h4>
+                  <p>
+                    Con una cuenta que usted cree en nuestro banco mantiene su dinero seguro.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-icon">
+                  <span class="fas fa-chart-line"></span>
+                </div>
+                <div class="services-caption">
+                  <h4>Inversión</h4>
+                  <p>
+                    Tu dinero está creciendo cada día con una mejor tasa del mercado financiero.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- button -->
+          <div class="row justify-content-center">
+            <div class="room-btn pt-50">
+              <a href="{% url 'servicios' %}" class="border-btn"
+                >Mas Productos</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--================ Start Testimonial Area =================-->
+      <div class="testimonial_area section_gap" style="margin-bottom: 0%">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-5">
+              <div class="main_title">
+                <h2 class="mb-3">¿Que opinan nuestros cliente?</h2>
+                <p>Testimonios y criterios de nuestros cliente</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Completed Cases Start -->
+          <div
+            class="row"
+            style="
+              background-color: rgba(238, 238, 238, 0.459);
+              margin-bottom: 3em;
+              padding: 3em;
+            "
+          >
+          {% for post in testimonio %}
+            <div class="card mb-3" style="max-width: 530px; margin-right: 1em;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{post.image.url}}" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{post.name}}</h5>
+                    <p class="card-text">
+                      {{post.description}}
+                    </p>
+                    <p class="card-text">
+                      <!-- <small class="text-muted">{{post.date}}</small> -->
+                      {% if request.user.is_authenticated %}
+                      <div class="btn-group">
+                        <i
+                          class="fas fa-ellipsis-h"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        ></i>
+      
+                        <div class="dropdown-menu">
+                          <a
+                            class="dropdown-item"
+                            href="{%  url 'editar-testimonio' post.id %}"
+                            >Editar Testimonio</a
+                          >
+                          <div class="dropdown-divider"></div>
+                          <a
+                            class="dropdown-item"
+                            href="{%  url 'eliminar-testimonio' post.id %}"
+                            >Eliminar Testimonio</a
+                          >
+                        </div>
+                      </div>
+      
+                    {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        
+    {% endblock container %} 
+    </main>
+   
+	<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+        <!-- Date Picker -->
+        <script src="{% static './assets/js/gijgo.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+		<script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>
+        
+        <script src="{% static './assets/js/fresco.js' %}"></script>
+        {% block scripts %}
+
+        {% endblock scripts %}
+        <style>
+          .card-i {
+            position: absolute; /* posición absolute con respecto al padre */
+            bottom: 100px; /* posicionada en la esquina inferior derecha */
+            right: 8rem;
+            background-color: rgba(255, 255, 255, 0.6);
+            width: 27rem;
+            height: 20rem;
+            border-radius: 4px;
+          }
+          .aticle {
+            padding: 50px;
+            color: #002e5b;
+            font-size: 25px;
+            font-weight: bold;
+            font: monospace;
+          }
+
+    
+          .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='orange' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+            padding: 0.8em;
+          }
+          .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='orange' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+            padding: 0.8em;
+          }
+    
+          .link {
+            color: rgb(2, 37, 83);
+            font-size: 15px;
+    
+            font-family: "Times New Roman", Times, serif;
+          }
+    
+          /* testimonios estilos */
+    
+          @media (max-width: 991px) {
+            .section_gap_bottom {
+              padding-bottom: 70px;
+            }
+          }
+          .main_title {
+            text-align: center;
+            margin-bottom: 85px;
+          }
+          @media (max-width: 991px) {
+            .main_title {
+              margin-bottom: 40px;
+            }
+          }
+          .main_title h2 {
+            font-size: 36px;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+          }
+          @media (max-width: 575px) {
+            .main_title h2 {
+              font-size: 30px;
+              margin-bottom: 10px;
+            }
+          }
+          .main_title p {
+            font-size: 16px;
+            margin-bottom: 0px;
+            font-style: italic;
+          }
+    
+          .testi_item {
+            padding: 50px 55px;
+            margin-bottom: 200px;
+            margin-left: 10px;
+            margin: 0px 10px 80px;
+            box-shadow: 0px 15px 30px 0px rgba(221, 221, 221, 0.3);
+            -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+          }
+          @media (max-width: 991px) {
+            .testi_item {
+              margin-bottom: 0px;
+            }
+          }
+          @media (max-width: 575px) {
+            .testi_item {
+              padding: 30px 20px;
+            }
+          }
+          .testi_item img {
+            border-radius: 5px;
+          }
+          .testi_item .col-lg-8 {
+            vertical-align: middle;
+            align-self: center;
+          }
+          @media (max-width: 991px) {
+            .testi_item .testi_text {
+              margin-top: 50px;
+            }
+          }
+          .testi_item .testi_text h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+          }
+          .testi_item .testi_text p {
+            margin-bottom: 0px;
+          }
+          .testi_item:hover {
+            box-shadow: 0px 10px 30px 0px rgba(0, 35, 71, 0.1);
+          }
+        </style>   
+    </body>
+</html>

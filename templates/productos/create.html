@@ -1,0 +1,146 @@
+{% extends 'index.html' %} {% load static %} {% load crispy_forms_tags %}{% block titulo %} Banc Pulingui |
+Historia {% endblock titulo%} {% block container %}
+
+<!-- slider Area Start-->
+<div class="slider-area">
+  <!-- Mobile Menu -->
+  <div
+    class="single-slider slider-height2 d-flex align-items-center"
+    data-background="{% static 'assets/img/hero/serv.jpg' %}"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2 style="color: rgb(0, 35, 71);">Insertar / Editar</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider Area End-->
+<section class="about_area section_gap">
+  <div class="container">
+    <div class="row h_blog_item" style="justify-content: center;">
+      <div class="col-lg-10">
+        <div class="h_blog_text">
+          <div class="h_blog_text_inner left right">
+            <h4>Contenido Productos</h4>
+            <hr />
+            <div class="main-container">
+                
+                
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.media}}
+                    {{form|crispy}}
+                   
+                    <input class="btn btn-primary" type="submit" value="Submit Post">
+                    
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  a{
+    color:rgba(4, 24, 61, 0.685);
+  }
+  #div_id_tags > div{
+		max-height: 100px;
+		overflow-y: scroll;
+		border:1px solid #888;
+		padding: 5px;
+		border-radius: 5px;
+	}
+  .section_gap {
+    padding: 25px 0;
+  }
+  @media (max-width: 991px) {
+    .section_gap {
+      padding: 70px 0;
+    }
+  }
+
+  .section_gap_top {
+    padding-top: 130px;
+  }
+  @media (max-width: 991px) {
+    .section_gap_top {
+      padding-top: 70px;
+    }
+  }
+
+  .section_gap_bottom {
+    padding-bottom: 130px;
+  }
+  @media (max-width: 991px) {
+    .section_gap_bottom {
+      padding-bottom: 70px;
+    }
+  }
+
+  .h_blog_item .col-lg-6 {
+    vertical-align: middle;
+    align-self: center;
+  }
+  .h_blog_item .h_blog_img {
+    position: relative;
+    z-index: 10;
+  }
+  .h_blog_item .h_blog_text {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner {
+    background: #fff;
+    padding: 75px 90px;
+    border-radius: 10px;
+  }
+  @media (max-width: 991px) {
+    .h_blog_item .h_blog_text .h_blog_text_inner {
+      padding: 30px 15px;
+    }
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner.left {
+    position: relative;
+    z-index: 2;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner.right {
+    margin-left: -104px;
+    position: relative;
+    z-index: 1;
+    border: 10px solid #e9e9e9;
+  }
+  @media (max-width: 991px) {
+    .h_blog_item .h_blog_text .h_blog_text_inner.right {
+      margin-left: 0px;
+    }
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner h4 {
+    color: #002347;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner p {
+    margin-bottom: 30px;
+  }
+
+  .h_blog_item .trusted-img {
+    position: initial;
+    z-index: 15;
+  }
+  p{
+      text-align: justify;
+  }
+  .h_blog_item{
+    margin-left: 7em;
+  }
+</style>
+
+{% endblock container %}

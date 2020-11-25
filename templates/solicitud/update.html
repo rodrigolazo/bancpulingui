@@ -1,0 +1,1312 @@
+{% extends 'index2.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{%block titulo %} Banc Pulingui | Solicitud {% endblock titulo%} 
+{% block container %}
+
+<section class="about_area section_gap">
+  <div class="container">
+    <div class="row h_blog_item" style="justify-content: center">
+      <div class="col-lg-11">
+        <div class="h_blog_text">
+          <div class="h_blog_text_inner left right">
+            
+            <hr />
+            <div class="main-container">
+              <div class="row">
+                <div class="col-lg-4 col-sm-3 col-sx-2">
+                  <img src="{% static 'assets/img/logo/ini.png' %}" alt="" style="width: 110%" />
+                </div>
+                <div class="col-lg-8">
+                  <h3 style="text-align: right">SOLICITUD DE CRÉDITO</h3>
+                  <hr class="linea" />
+                  <p class="text_1">
+                    <label style="font-weight: bold">NOTA:</label> los datos por
+                    usted proporcionados son de carácter confidencial y sujetos
+                    de comprobación, cualquier dato comprobado como falso será
+                    causa suficiente para negar el crédito.
+                  </p>
+                </div>
+              </div>
+              <form action="{% url 'edit-solicitud' credito.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group row" style="
+                    font-size: 15px;
+                    background-color: #002060;
+                    color: white;
+                    margin-bottom: 0.1em;
+                  ">
+                 
+                  <label for="inputEmail3" class="col-sm-1.5 col-form-label" style="margin-left: 0.7em">Socio
+                    N°.</label>
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control form-control-sm" id="inputEmail3" placeholder="N°. de socio"
+                      style="margin-top: 0.25em" name="socioN" maxlength="7" value="{{credito.socio}}"/>
+                  </div>
+                  <label for="inputEmail3" class="col-sm-0.5" style="margin-top: 0.5em">DEUDOR &nbsp;</label>
+                  <div class="col-sx-1" >
+                    
+                    {% if credito.deudor == True %}  
+                      <input type="checkbox" id="inputEmail3" style="margin-top: 0.7em" value="True" name="deudor" checked/>
+                    {% else %}
+                      <input type="checkbox" id="inputEmail3" style="margin-top: 0.7em" value="True" name="deudor"/>
+                    {% endif %}
+                </div>
+      
+                  <label for="inputEmail3" class="col-sm-0.5" style="margin-top: 0.5em">&nbsp;GARANTE &nbsp;</label>
+                  
+                  <div class="col-sx-1">
+                    {% if credito.garante == True %}  
+                      <input type="checkbox" id="inputEmail3" style="margin-top: 0.7em" value="True" name="garante" checked/>
+                    {% else %}
+                      <input type="checkbox" id="inputEmail3" style="margin-top: 0.7em" value="True" name="garante"/>
+                    {% endif %}
+                  </div>
+                  <label for="inputEmail3" class="col-sm-1.5 col-form-label">&nbsp;&nbsp;del socio N°:</label>
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control form-control-sm" id="inputEmail3" placeholder="N°. "
+                      style="margin-top: 0.25em" name="numsocio" maxlength="7" value="{{credito.numsocio}}" />
+                  </div>
+                  <label for="inputEmail3" class="col-sm-2.7 col-form-label">Fecha de solicitud:
+                  </label>
+                  <div class="col-sm-2">
+                    <input type="date" class="form-control form-control-sm" 
+                      style="margin-top: 0.25em" name="fecha" value="{{credito.fecha}}"/>
+                  </div>
+                </div>
+                
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> DATOS DEL CRÉDITO</label>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-3" style="border-right: #002060 solid">
+                    <label for="validationCustom01">MONTO SOLICITADO </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom01"
+                      placeholder="$"  required name="monto" maxlength="5" value="{{credito.monto}}"/>
+                    <label for="validationCustom01">Para un plazo de</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom01"
+                      placeholder="Eje: 5 meses"  required name="plazo" value="{{credito.plazo}}"/>
+                  </div>
+                  <div class="col-sm-3" style="border-right: #002060 solid">
+                    <label for="validationCustom01">DESTINO DEL PRÉSTAMO</label>
+
+                    <select class="form-control form-control-sm amore" style="position: static" name="destinoP" required value=value="{{credito.destinoP}}">
+                      <option disabled value>Seleccione una opción</option>
+                      <option value="Comercio">
+                        Comercio &nbsp;&nbsp;&nbsp;
+                      </option>
+                      <option value="Ganaderia">Ganaderia &nbsp;&nbsp;</option>
+                      <option value="Agricultura">Agricultura</option>
+                      <option value="Compra de terreno">
+                        Compra de terreno
+                      </option>
+                      <option value="Construcción de casa">
+                        Construcción de casa
+                      </option>
+                      <option value="Compra de vehículo">
+                        Compra de vehículo
+                      </option>
+                      <option value="Compra de electrodomesticos">
+                        Electrodomesticos
+                      </option>
+                      <option value="Comercio ">Pago de deudas</option>
+                    </select>
+                    <br /><br /><br />
+                    <label for="validationCustom01">Otros</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom01"
+                      placeholder="Ingrese destino prestamo"  name="otroDes" value="{{credito.otroDes}}" />
+                  </div>
+                  <div class="col-sm-3" style="border-right: #002060 solid">
+                    <label for="validationCustom01">FORMA DE PAGO </label>
+                    <select class="form-control form-control-sm amore" required name="cuotas" value="{{credito.cuotas}}">
+                      <option disabled value>Seleccione una opción</option>
+                      <option value="Cuotas semanales">Cuotas semanales</option>
+                      <option value="Cuotas mensuales">Cuotas mensuales</option>
+                      <option value="Cuotas trimestrales">Cuotas trimestrales</option>
+                      <option value="Al vencimiento">Al vencimiento</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="validationCustom01">¿FECHA QUE PUEDE PAGAR?
+                    </label>
+                    <input type="date" class="form-control form-control-sm" id="validationCustom01"
+                      placeholder="Eje: 13/10/2020"  required name="fechaPago" value="{{credito.fechaPago}}"/>
+                    <label for="validationCustom01">¿CUÁNTO PUEDE PAGAR?</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom01"
+                      placeholder="Eje: 80 mensual"  required name="montoPagar" value="{{credito.montoPagar}}"/>
+                  </div>
+                </div>
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> DATOS DEL SOLICITANTE / GARANTE </label>
+                </div>
+                <!-- div 1 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nombres y Apellidos:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Ingrese nombres y apellidos"
+                      required name="nombres" value="{{credito.nombres}}"/>
+                    <div class="invalid-feedback">Ingrese Nombres y Apellidos:</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">C.I:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="Eje:0605478245"
+                      required name="cedula" maxlength="10" name="soloNumeros" value="{{credito.cedula}}"/>
+                    <div class="invalid-feedback">
+                      ingrese la cedula
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Nivel Académico:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="ingrese su nivel de estudio"
+                      required name="nivelA" value="{{credito.nivelA}}"/>
+                    <div class="invalid-feedback">
+                      Ingrese el nivel academico
+                    </div>
+                  </div>
+                </div>
+                <!-- div 2 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Correo electrónico:</label>
+                    <input type="email" class="form-control form-control-sm" id="validationCustom03" placeholder="eje. mario@gmail.com"
+                      name="correo" value="{{credito.correo}}" />
+                    <div class="invalid-feedback">ingrese correo</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Estado civil:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="Ingrese el estado civil"
+                      required name="estadoCivil" value="{{credito.estadoCivil}}"/>
+                    <div class="invalid-feedback">
+                      Ingrese estado civil
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Edad:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="ingrese su edad"
+                      required name="edad" value="{{credito.edad}}"/>
+                    <div class="invalid-feedback">
+                      Ingrese su edad
+                    </div>
+                  </div>
+                </div>
+
+                <!-- div 3 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Domicilio: Provincia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Ingrese el domicilio o provincia"
+                      required name="domicilio" value="{{credito.domicilio}}" />
+                    <div class="invalid-feedback">ingrese domiciolio</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Cantón:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="Ingrese el cantón"
+                      required name="canton" value="{{credito.canton}}" />
+                    <div class="invalid-feedback">
+                      Ingrese canton
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Parroquia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="Parroquia"
+                      required name="parroquia" value="{{credito.parroquia}}" />
+                    <div class="invalid-feedback">
+                      Ingrese parroquia
+                    </div>
+                  </div>
+                </div>
+                <!-- comunidad  -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Comunidad: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Ingrese comunidad"
+                      name="comunidad" value="{{credito.comunidad}}" />
+                    <div class="invalid-feedback">Ingrese comunidad</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Sector / Barrio:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="Ingrese Sector/Barrio"
+                       name="sectorBarrio" value="{{credito.sectorBarrio}}" />
+                    <div class="invalid-feedback">
+                      sector Barrio
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Ciudadela:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="Ingrese ciudadela"
+                      name="ciudadela" value="{{credito.ciudadela}}" />
+                    <div class="invalid-feedback">
+                      Ingrese ciudadela
+                    </div>
+                  </div>
+                </div>
+                <!-- div 5 -->
+                <div class="form-row">
+                  <div class="col-md-9 mb-9">
+                    <label for="validationCustom03">Dirección (calles): </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Eje: 10 de agosto y macas"
+                      name="direccion" value="{{credito.direccion}}" />
+                    <div class="invalid-feedback">Ingrese la direccion </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">N°. casa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="Numero de casa"
+                       name="numCasa" value="{{credito.numCasa}}" />
+                    <div class="invalid-feedback">
+                      Ingrese N.- Casa
+                    </div>
+                  </div>
+                </div>
+                <!-- div 6 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Referencias del domicilio:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Ingrese referencia"
+                      name="refDomicilio" value="{{credito.refDomicilio}}" />
+                    <div class="invalid-feedback">referencia</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Teléfono:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="teléfono"
+                      name="telefono" value="{{credito.telefono}}" />
+                    <div class="invalid-feedback">
+                      Ingrese num telefono
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Celular:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="Ingrese el num de celular"
+                      required name="celular" value="{{credito.celular}}" />
+                    <div class="invalid-feedback">
+                      Ingrese el num celular
+                    </div>
+                  </div>
+                </div>
+                <!-- div 6 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-6">
+                    <label for="validationCustom03">N° de cargas familiares:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="Cargas familiares"
+                      name="cargaFamiliar" value="{{credito.cargaFamiliar}}" />
+                    <div class="invalid-feedback">Cargar familiar</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Separación de bienes:</label>
+
+                    <select class="form-control form-control-sm" required name="separacion" value="{{credito.separacion}}">
+                      <option disabled value>Seleccione una opción</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Porfavor Seleccione
+                    </div>
+                  </div>
+                </div>
+
+                <!-- div 8 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-7">
+                    <label for="validationCustom03">Estado de vivienda: </label>
+                    <select class="form-control form-control-sm" name="estadoCasa" value="{{credito.estadoCasa}}">
+                      <option disabled value>Seleccione una opción</option>
+                      <option value="Casa propia">Casa propia</option>
+                      <option value="Arrendada">Arrendada</option>
+                      <option value="Familiar">Familiar</option>
+                    </select>
+                    <div class="invalid-feedback">seleccione una</div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Otros especifique</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="especifique otro"
+                      name="viviendaOtro" value="{{credito.viviendaOtro}}" />
+                    <div class="invalid-feedback">
+                      otro estado
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Tiempo de residencia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="años"
+                      required name="tiempoResidencia" value="{{credito.tiempoResidencia}}"/>
+                    <div class="invalid-feedback">
+                      Porfavor ingrese una resistencia
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> EN CASO DE SER EMPLEADO </label>
+                </div>
+                <!-- parte 1 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nombre de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese nombre de la empresa" name="nombreEmpresa" value="{{credito.nombreEmpresa}}" />
+                    <div class="invalid-feedback">Nombre de la Empresa:</div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">Dirección de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="ingrese la dirección de la empresa" name="dirEmpresa" value="{{credito.dirEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Dirección de la Empresa:
+                    </div>
+                  </div>
+                </div>
+                <!-- parte 2 -->
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom03">Provincia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese la provincia" name="provinciaEmpresa" value="{{credito.provinciaEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese una provincia valida
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom04">Cantón:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese el canton" name="cantonEmpresa" value="{{credito.cantonEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese un canton valida
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">Parroquia: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese la parroquia" name="parroquiaEmpresa" value="{{credito.parroquiaEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese una parroquia valida
+                    </div>
+                  </div>
+                </div>
+
+                <!-- parte 3 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Telf. de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Eje: 0985454667" name="telEmpresa" value="{{credito.telEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Tiempo que trabaja:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="tiempo en años" name="tiempoTrabajo" value="{{credito.tiempoTrabajo}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Cargo:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese el cargo" name="cargoEmpresa" value="{{credito.cargoEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Sueldo: $ </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="sueldoEmpresa" value="{{credito.sueldoEmpresa}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese contenido
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> DATOS DEL CONYUGE </label>
+                </div>
+                <!-- conyuge 1 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nombres y Apellidos:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese el nombres" name="nombresConyuge" value="{{credito.nombresConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">C.I: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                    placeholder="Eje:0605478245" maxlength="10" name="cedulaConyuge" value="{{credito.cedulaConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Nivel Académico:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese el nivel academico" name="nivelConyuge" value="{{credito.nivelConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- conyuge 2 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Correo electrónico:</label>
+                    <input type="email" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese el correo" name="correoConyuge" value="{{credito.correoConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Celular / Telf.:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese el celular/Telf" name="telConyuge" value="{{credito.telConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Edad:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="años"
+                      name="edadConyuge" value="{{credito.edadConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- conyuge 3 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nombre de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese nombre de la empresa" name="nombreEmpresaConyuge" value="{{credito.nombreEmpresaConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">Dirección de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese la dirección" name="dirEmpresaConyuge" value="{{credito.dirEmpresaConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- conyuge 2 -->
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom03">Provincia: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese la provincia" name="provinciaConyuge" value="{{credito.provinciaConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom04">Cantón:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese el canton" name="cantonConyuge" value="{{credito.cantonConyuge}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">Parroquia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese una parroquia" name="parroquiaConyuge" value="{{credito.parroquiaConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- conyuge 4 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Telf. de la Empresa:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese Telf de la empresa" name="telEmpresaConyuge" value="{{credito.telEmpresaConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Tiempo que trabaja:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese tiempo años" name="tiempoTraConyuge" value="{{credito.tiempoTraConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Cargo:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese el cargo" name="cargoConyuge" value="{{credito.cargoConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Sueldo: $</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="sueldoConyuge" value="{{credito.sueldoConyuge}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> EN CASO DE TENER NEGOCIO PROPIO </label>
+                </div>
+                <!-- conyuge 3 -->
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nombre de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese el nombre de la empresa" name="nombreNegocio" value="{{credito.nombreNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom04">Dirección de la Empresa:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese la dirección" name="dirNegocio" value="{{credito.dirNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- empresa 2 -->
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom03">Provincia: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese la provincia" name="provinciaNegocio" value="{{credito.provinciaNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom04">Cantón:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese el canton" name="cantonNegocio" value="{{credito.cantonNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">Parroquia:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese una parroquia" name="parroquiaNegocio" value="{{credito.parroquiaNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <!-- empresa 3 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Telf. de la Empresa:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese Telf de la empresa" name="telNegocio" value="{{credito.telNegocio}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Tiempo que trabaja:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese tiempo años" name="tiempoNegocio" value="{{credito.tiempoNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Cargo:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Eje: jefe/gerente" name="cargoNegocio" value="{{credito.cargoNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Utilidad: $</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="utilidadNegocio" value="{{credito.utilidadNegocio}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> REFERENCIAS FAMILIARES </label>
+                </div>
+                <!-- referencia familia 1 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Nombres y Apellidos:
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese Nombres referencia 1" required name="nombreFamilia1" value="{{credito.nombreFamilia1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese Nombres referencia 2" required name="nombreFamilia2" value="{{credito.nombreFamilia2}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Dirección:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese dirección referencia 1" required name="dirFamilia1" value="{{credito.dirFamilia1}}" />
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese dirección referencia 2" required name="dirFamilia2" value="{{credito.dirFamilia2}}" />
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Parentesco:</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese parentesco referencia 1" required name="parentesco1" value="{{credito.parentesco1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese parentesco referencia 2" required name="parentesco2" value="{{credito.parentesco2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Teléfono: </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese Teléfono referencia 1" required name="telFamilia1" value="{{credito.telFamilia1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese Teléfono referencia 2" required name="telFamilia2" value="{{credito.telFamilia2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> REFERENCIAS FINANCIERAS BANCARIAS </label>
+                </div>
+                <!-- referencia bancaria 1 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">BANCO / COOPERATIVA</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="BANCO / COOPERATIVA 1" name="nombreBanco1" value="{{credito.nombreBanco1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="BANCO / COOPERATIVA 2" name="nombreBanco2" value="{{credito.nombreBanco2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">N° CTA. AHORROS </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese N° CTA. AHORROS 1" name="ahorros1" value="{{credito.ahorros1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese N° CTA. AHORROS 2" name="ahorros2" value="{{credito.ahorros2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">N° CTA. CORRIENTE </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese N° CTA. CORRIENTE 1" name="corriente1" value="{{credito.corriente1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese N° CTA. CORRIENTE 2" name="corriente2" value="{{credito.corriente2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">SALDO PROMEDIO </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese sueldo promedio $ 1" name="salPromedio1" value="{{credito.salPromedio1}}"/>
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese sueldo promedio $ 2" name="salPromedio2" value="{{credito.salPromedio2}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> REFERENCIAS COMERCIALES </label>
+                </div>
+                <!-- referencia comerciales -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Nombre de la empresa
+                    </label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom03"
+                      placeholder="Ingrese el nombre de la empresa" name="refComercial" value="{{credito.refComercial}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Dirección :</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese la dirección" name="dirComercial" value="{{credito.dirComercial}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Teléfono :</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese el teléfono" name="telComercial" value="{{credito.telComercial}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">¿Qué compro ?</label>
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="descripción de la compra" name="compra" value="{{credito.compra}}"/>
+                    <div class="invalid-feedback">
+                      Por favor ingrese el contenido
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> ESTADO DE SITUACIÓN PERSONAL </label>
+                </div>
+                <!-- estado de cituacion personal -->
+                <div class="form-row">
+                  <div class="col-md-6" style="color: #002060; text-align: center">
+                    <label>ACTIVOS </label>
+                  </div>
+                  <div class="col-md-6" style="color: #002060; text-align: center">
+                    <label>PASIVOS</label>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">EFECTIVO / BANCOS </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04"
+                      placeholder="Ingrese EFECTIVO / BANCOS $"  name="efectivo" value="{{credito.efectivo}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">DEUDAS / BANCOS :</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05"
+                      placeholder="Ingrese DEUDAS / BANCOS  $" name="deudaBanco" value="{{credito.deudaBanco}}"/>
+                  </div>
+                </div>
+                <!-- estado citu 2 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">CUENTAS POR COBRAR</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="cuentaCobrar" value="{{credito.cuentaCobrar}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">DEUDAS / COOPERATIVAS:</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="deudaCobrar" value="{{credito.deudaCobrar}}"/>
+                  </div>
+                </div>
+                <!-- estado citu 3 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">MERCADERÍA </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="mercaderia" value="{{credito.mercaderia}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">PROVEEDORES :</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="proveedores" value="{{credito.proveedores}}"/>
+                  </div>
+                </div>
+                <!-- estado citu 4 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">TERRENO </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="terreno" value="{{credito.terreno}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">CASAS COMERCIALES:</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="casaComercial" value="{{credito.casaComercial}}"/>
+                  </div>
+                </div>
+
+                <!-- estado citu 5 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">CASA </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="casa" value="{{credito.casa}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">PRESTAMISTA </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="prestamista" value="{{credito.prestamista}}"/>
+                  </div>
+                </div>
+                <!-- estado citu 6 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">VEHÍCULO </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="vehiculo" value="{{credito.vehiculo}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">OTRAS DEUDAS A LARGO PLAZO
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="otrasdeudas" value="{{credito.otrasdeudas}}"/>
+                  </div>
+                </div>
+                <!-- estado citu 6 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">BIENES ENSERES </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="bienesEnseres" value="{{credito.bienesEnseres}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03" style="font-weight: bold;">TOTAL PASIVOS:</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                       value="{{totalPasivos}}" disabled/>
+                  </div>
+                </div>
+                <!-- estado citu 7 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">OTROS ACTIVOS - ACCIONES
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="otrosActivos" value="{{credito.otrosActivos}}"/>
+                  </div>
+                  <div class="col-md-6 mb-6">
+                    <label for="validationCustom03">PATRIMONIO = ACTIVO – PASIVO </label>
+                  </div>
+                </div>
+
+                <!--  -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03" style="font-weight: bold;">TOTAL ACTIVOS </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                       value="{{totalActivos}}" disabled/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05" style="font-weight: bold;">PATRIMONIO = $</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                       value="{{patrimonio}}" disabled/>
+                  </div>
+                  
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    background-color: #002060;
+                    color: white;
+                    justify-content: center;
+                  ">
+                  <label for=""> DETALLE DE INGRESOS Y GASTOS MENSUALES </label>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-3" style="color: #002060; text-align: center">
+                    <label>INGRESOS </label>
+                  </div>
+                  <div class="col-md-3" style="color: #002060; text-align: center">
+                    <label>VALOR</label>
+                  </div>
+                  <div class="col-md-3" style="color: #002060; text-align: center">
+                    <label>GASTOS</label>
+                  </div>
+                  <div class="col-md-3" style="color: #002060; text-align: center">
+                    <label>VALOR</label>
+                  </div>
+                </div>
+                <!-- ingresos, gastos 1 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Sueldo o ingreso mensual
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="sueldoMensual" value="{{credito.sueldoMensual}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Gastos de alimentación, educación
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="gastosAlimentos" value="{{credito.gastosAlimentos}}"/>
+                  </div>
+                </div>
+                <!-- ingresos, gastos 2 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Utilidad mensuales negocio propio
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="utilidadMensual" value="{{credito.utilidadMensual}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Gastos de servicios básicos, arriendo
+                    </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="gastosServicios" value="{{credito.gastosServicios}}"/>
+                  </div>
+                </div>
+
+                <!-- ingresos, gastos 3 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Sueldo del conyugue </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="salarioConyuge" value="{{credito.salarioConyuge}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Gastos de salud, transporte</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="gastoSalud" value="{{credito.gastoSalud}}"/>
+                  </div>
+                </div>
+
+                <!-- ingresos, gastos 4 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Agricultor-ganadero</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="agricultorG" value="{{credito.agricultorG}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Pago de Préstamos </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="pagoPrestamo" value="{{credito.pagoPrestamo}}"/>
+                  </div>
+                </div>
+
+                <!-- ingresos, gastos 4 -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03">Otros ingresos </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                      name="otrosIngresos" value="{{credito.otrosIngresos}}"/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Otros gastos </label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                      name="otrosGastos" value="{{credito.otrosGastos}}"/>
+                  </div>
+                  
+                </div>
+
+                <!-- Total ingresos y gastos -->
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom03" style="font-weight: bold;">TOTAL DE INGRESOS:</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom04" placeholder="$"
+                       value="{{ingresos}}" disabled/>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05" style="font-weight: bold;">TOTAL DE GASTOS:</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                       value="{{gastos}}" disabled/>
+                  </div>
+                  
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                   
+                  </div>
+                  
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05" style="font-weight: bold;">Útil. Neta=ingresos - gastos</label>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control form-control-sm" id="validationCustom05" placeholder="$"
+                       value="{{utilidadNeta}}" disabled/>
+                  </div>
+                  
+                </div>
+
+                <div class="form-group row" style="
+                    font-size: 20px;
+                    
+                    color: #002060;
+                    justify-content: center;
+                  ">
+                  <label for=""> CROQUIS UBICACIÓN DOMICILIO Y/O TRABAJO</label>
+                </div>
+                
+                  <div class="form-row" style="background-color:  #002060;">
+                    <div class="col-md-6" style="color: white; text-align: center;">
+                      <label>DOMICILIO SOCIO </label>
+                    </div>
+                    <div class="col-md-6" style="color: white; text-align: center;">
+                      <label>TRABAJO SOCIO </label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-row" style="border: #002060  solid;">
+                    <div class="col-md-6" style="height: 15em; width: auto;border-right: #002060 solid;" >
+                      <label></label>
+                    </div>
+                    <div class="col-md-6" style="height: 15em; width: auto;">
+                      <label></label>
+                    </div>
+                  </div>
+
+                  <div class="form-row" >
+                    <div class="col-md-6" style="color:#002060;">
+                      <label>CARACTERÍSTICA DE LA CASA: </label>
+                    </div>
+                    <div class="col-md-6" style="color: #002060;">
+                      <label>DETALLE DEL LUGAR DE TRABAJO: </label>
+                    </div>
+                  </div>
+                  <div class="form-row" >
+                    <div class="col-md-12" style="color:#002060;">
+                      <label style="text-align: justify; font-size: 10px; color: black;">Declaro que la siguiente información en esta solicitud es correcta y verdadera, igualmente certifico y declaro que los fondos entregados y recibidos del Banco Comunal son lisitos y
+                        consecuentemente no provienen ni serán destinados a ninguna actividad relacionada con la producción, consumo o comercialización y tráfico de sustancias estupefacientes y psicotrópicas, o
+                        cualquier otra actividad tipificada en la ley de lavado de activos. Autorizo a la cooperativa y las autoridades competentes para que realicen la verificación a lo aclarado. Autorizo expresa e
+                        irrevocablemente al banco para que obtenga cuantas veces sean necesarias se verifique a través de los medios que se estimen pertinentes, especialmente mediante la consulta de la
+                        información en los buros de crédito. Además, autorizo que toda la información de riesgos crediticios constante en el presente contrato, convenio o solicitud sea transferida y actualizada
+                        periódicamente en los buros de crédito y/o a la central de riesgo si fuerapertinente.
+                        </label>
+                        <br><br><br><br>
+                        <div class="form-row" >
+                          <div class="col-md-6" style="color:#002060;text-align: center;">
+                            <label>________________________</label>
+                            
+                          </div>
+                          <div class="col-md-6" style="color: #002060; text-align: center;">
+                            <label>________________________</label>
+                            
+                          </div>
+
+                          <div class="col-md-6" style="color:#002060;text-align: center;">
+                           
+                            <label>FIRMA</label>
+                          </div>
+                          <div class="col-md-6" style="color: #002060; text-align: center;">
+                           
+                            <label>FIRMA (CÓNYUGUE)</label>
+                          </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-4 col-lg-3 col-md-3">
+                        <button type="submit" class="btn btn">Editar</button>
+                        
+                      </div>
+                      <div class="col-xl-3 col-lg-3 col-md-3">
+                        
+                        
+                      </div>
+                      <div class="col-xl-4 col-lg-3 col-md-3">
+                        
+                        <button type="button" class="btn btn" onclick="javascript:window.print()">Imprimir</button>
+                      </div>
+
+                    </div>
+                    
+                    
+                  </div>
+                
+
+                
+              </form>
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Validacion   -->
+<script>
+  function soloNumeros(e){
+  var key = window.event ? e.which : e.keyCode;
+  if (key < 48 || key > 57) {
+    e.preventDefault();
+  }
+}
+
+</script>
+<style>
+  .section_gap {
+    padding: 25px 0;
+  }
+
+  .h_blog_item .h_blog_text .h_blog_text_inner {
+    background: #fff;
+    padding: 75px 90px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 991px) {
+    .h_blog_item .h_blog_text .h_blog_text_inner {
+      padding: 30px 15px;
+    }
+  }
+
+  .h_blog_item .h_blog_text .h_blog_text_inner.left {
+    position: relative;
+    z-index: 2;
+  }
+
+  .h_blog_item .h_blog_text .h_blog_text_inner.right {
+    margin-left: -104px;
+    position: relative;
+    z-index: 1;
+    border: 10px solid #e9e9e9;
+  }
+
+  .text_1 {
+    font-size: 11px;
+    line-height: 15px;
+    margin-top: 2em;
+    color: black;
+  }
+
+  .linea {
+    border: 2px solid rgb(37, 106, 185);
+    margin: 0%;
+  }
+
+  .about_area {
+    margin-left: 6em;
+  }
+</style>
+{% block scripts %}
+<script type="text/javascript" src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+<script type="text/javascript" src="{% static './assets/js/additional-methods.min.js' %}"></script>
+        
+{% endblock scripts %}
+
+
+{% endblock container %}

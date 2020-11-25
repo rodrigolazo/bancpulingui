@@ -1,0 +1,46 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+Contactos {% endblock titulo%} {% block container %}
+<!-- slider Area Start-->
+
+
+<style type="text/css">
+	html, body{
+		height: 100%;
+	}
+
+	#page-wrapper{
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		
+	}
+
+	#success-box{
+		max-width: 800px;
+		height: auto;
+		background-color: #fff;
+		border:1px solid #888;
+		border-radius: 5px;
+		padding: 15px;
+	}
+
+	#success-box p{
+		font-size: 18px;
+	}
+	.container{
+		margin: 7em;
+	}
+</style>
+
+<div id="page-wrapper" class="container">
+	<div id="success-box" class="content-block">
+		<h1>¡Gracias por contactarnos!</h1>
+		<p>Su mensaje fue enviado con éxito. Harémos todo 
+			lo posible para responderle de manera oportuna...</p>
+		<a id="back-btn" class="btn btn-success" href="{% url 'home' %}">Regresar a inicio</a>
+	</div>
+</div>
+
+{% endblock container %}

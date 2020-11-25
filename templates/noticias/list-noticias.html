@@ -1,0 +1,173 @@
+{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+lista {% endblock titulo%} {% block container %}
+
+<!-- slider Area Start-->
+<div class="slider-area">
+  <!-- Mobile Menu -->
+  <div
+    class="single-slider slider-height2 d-flex align-items-center"
+    data-background="{% static 'assets/img/hero/serv.jpg' %}"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2 style="color: rgb(0, 35, 71);">Lista Noticias</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider Area End-->
+<section class="about_area section_gap">
+  <div class="container">
+    <div class="row h_blog_item" style="justify-content: center;">
+      <div class="col-lg-8">
+        <div class="h_blog_text">
+          <div class="h_blog_text_inner left right">
+            <h4>Noticias</h4>
+            <hr />
+            <div class="main-container">
+                <div class="table-responsive">
+                    <table id="add-row" class="display table table-striped table-hover">
+                        <thead class="bg-success" style="color: white;">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th style="width: 10%">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            {% for dato in listpost %}
+
+                            <tr>
+                                <td>{{dato.id}}</td>
+                                <td>{{dato.name}}</td>
+                                <td>{{dato.active}}</td>
+                                <td>{{dato.date}}</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <a href="{%  url 'editar-noticia' dato.id %}" data-original-title="Editar Producto">
+                                            
+                                            <i class="fa fa-edit" style="color: rgb(5, 37, 105);"></i>
+                                        
+                                    </a>
+                                        <a href="{%  url 'eliminar-noticia' dato.id %}" data-original-title="Eliminar Producto">
+                                            
+                                            <i class="fa fa-times" style="color: rgb(143, 5, 5);"></i>
+                                        
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section_gap {
+    padding: 25px 0;
+  }
+  @media (max-width: 991px) {
+    .section_gap {
+      padding: 70px 0;
+    }
+  }
+
+  .section_gap_top {
+    padding-top: 130px;
+  }
+  @media (max-width: 991px) {
+    .section_gap_top {
+      padding-top: 70px;
+    }
+  }
+
+  .section_gap_bottom {
+    padding-bottom: 130px;
+  }
+  @media (max-width: 991px) {
+    .section_gap_bottom {
+      padding-bottom: 70px;
+    }
+  }
+
+  .h_blog_item .col-lg-6 {
+    vertical-align: middle;
+    align-self: center;
+  }
+  .h_blog_item .h_blog_img {
+    position: relative;
+    z-index: 10;
+  }
+  .h_blog_item .h_blog_text {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner {
+    background: #fff;
+    padding: 75px 90px;
+    border-radius: 10px;
+  }
+  @media (max-width: 991px) {
+    .h_blog_item .h_blog_text .h_blog_text_inner {
+      padding: 30px 15px;
+    }
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner.left {
+    position: relative;
+    z-index: 2;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner.right {
+    margin-left: -104px;
+    position: relative;
+    z-index: 1;
+    border: 10px solid #e9e9e9;
+  }
+  @media (max-width: 991px) {
+    .h_blog_item .h_blog_text .h_blog_text_inner.right {
+      margin-left: 0px;
+    }
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner h4 {
+    color: #002347;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  .h_blog_item .h_blog_text .h_blog_text_inner p {
+    margin-bottom: 30px;
+  }
+
+  .h_blog_item .trusted-img {
+    position: initial;
+    z-index: 15;
+  }
+  p{
+      text-align: justify;
+  }
+</style>
+
+{% endblock container %}
