@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'w4c&*%rff*p2^!$8vtsa*7cdt25zqw%qjmk_avj)ikpm6gkwsi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -86,26 +86,8 @@ WSGI_APPLICATION = 'bancpulingui.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bancopulingui',
-        'USER': 'postgres',
-        'PASSWORD':'123',
-        'HOST': 'localhost',
-        'PORT':'',
-    }
-} """
 
-import dj_database_url 
-from decouple import config
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -182,3 +164,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bancpuligui@gmail.com'
 EMAIL_HOST_PASSWORD = 'Bancopuli2020'
+
