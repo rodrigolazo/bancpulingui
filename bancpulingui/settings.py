@@ -27,7 +27,7 @@ SECRET_KEY = 'w4c&*%rff*p2^!$8vtsa*7cdt25zqw%qjmk_avj)ikpm6gkwsi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -152,12 +152,13 @@ MEDIA_URL = '/imagen/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+#ARCHIS STATIC PARA PRODUCCION
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/assets/img')
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
-#ARCHIS STATIC PARA PRODUCCION
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 #CKEDITOR
 
