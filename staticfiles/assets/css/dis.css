@@ -2340,7 +2340,7 @@ hr {
     background-repeat: no-repeat
 }
 .slider-area .hero-cap h2 {
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 50px;
     font-weight: 700;
     text-transform: capitalize
@@ -3380,7 +3380,7 @@ hr {
 }
 .blog_area a:hover,
 .blog_area a:hover {
-    background: -webkit-linear-gradient(131deg, #ff656a 0%, #ff656a 99%);
+    background: -webkit-linear-gradient(131deg, #012f5f 0%, #012f5f 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
