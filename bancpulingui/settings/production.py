@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['bancpulinguiec.herokuapp.com']
+ALLOWED_HOSTS = ['bancpulinguiec.herokuapp.com','127.0.0.1']
 
 import dj_database_url 
 from decouple import config
@@ -14,4 +14,4 @@ DATABASES = {
 
 }
 
-STATICFILES_DIRS = (BASE_DIR, 'static')
+#STATICFILES_DIRS = (BASE_DIR, 'static')

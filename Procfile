@@ -1,1 +1,1 @@
-web: gunicorn bancpulingui.wsgi 
+web: gunicorn bancpulingui.wsgi --log-file -
