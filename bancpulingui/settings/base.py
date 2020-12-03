@@ -47,10 +47,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'storages',
+    
+    #tengo añadido cosas de cors
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
 
 ROOT_URLCONF = 'bancpulingui.urls'
 
