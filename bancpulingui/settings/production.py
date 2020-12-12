@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['bancpulinguiec.herokuapp.com','127.0.0.1','bancopulingui.com','www.bancopulingui.com']
+ALLOWED_HOSTS = ['127.0.0.1','bancpulinguiec.herokuapp.com','bancopulingui.com','www.bancopulingui.com']
 
 import dj_database_url 
 from decouple import config
