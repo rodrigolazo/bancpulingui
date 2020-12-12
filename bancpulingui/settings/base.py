@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'storages',
-    'import_export',
+    #'import_export',
     #tengo añadido cosas de cors
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
