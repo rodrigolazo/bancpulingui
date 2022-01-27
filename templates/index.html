@@ -4,12 +4,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{% block titulo %}Banco Pulingui {% endblock titulo%} </title>
+        <title>{% block titulo %}Caja Pulingui {% endblock titulo%} </title>
+
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
         <link rel="manifest" href="site.webmanifest.json" crossorigin= "use-credentials">
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/puli.png' %}">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/init.png' %}">
     
     
     <!-- CSS here -->
@@ -99,7 +101,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{% static 'assets/img/puli.png' %}" alt="">
+                    <img src="{% static 'assets/img/init.png' %}" alt="">
                 </div>
             </div>
         </div>
@@ -116,7 +118,7 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>     
-                                        <li><i class="fas fa-map-marker-alt"></i><a href="https://goo.gl/maps/eKLTukgMYJkAMbqZ7" target="_blank" rel="noopener noreferrer">Ilario pacheco y Marcelo Toty, Comunidad Pulingui - Barrio Centro</a> </li>
+                                        <li><i class="fas fa-map-marker-alt"></i><a href="https://goo.gl/maps/z3k5ienMagZeqmsh9" target="_blank" rel="noopener noreferrer">Ilario pacheco y Marcelo Toty, Comunidad Pulingui - Barrio Centro</a> </li>
                                         <li><i class="fas fa-envelope"></i>bancpuligui@gmail.com</li>
                                         {% if request.user.is_authenticated %}
                                           <li>Visitas: {{ num_visits }}{% if num_visits == 1 %}.{% else %}.{% endif %}</li>
@@ -127,7 +129,7 @@
                                     <ul class="header-social">    
                                         <!-- <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li> -->
-                                        <li><a href="https://www.facebook.com/banc.pulin" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://www.facebook.com/Cajapulingui" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                        <!-- <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li> -->
                                     </ul>
                                 </div>
@@ -141,7 +143,7 @@
                             <!-- Logo -->
                             <div class="col-sm-2 col-md-1 col-lg-1">
                                 <div class="logo">
-                                  <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/ini.png' %}" alt="" ></a>
+                                  <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/caja.png' %}" alt="" style="width: 170px;height: 65px;" ></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-10">
@@ -277,6 +279,7 @@
 
     <main>
     {% block container %}
+    
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li
@@ -421,14 +424,14 @@
           <div class="row d-flex align-items-end">
             <div class="col-xl-7 col-lg-7">
               <div class="trusted-img">
-                <img src="{% static 'assets/img/team/logoss.jpg' %}" alt="" />
+                <img src="{% static 'assets/img/init.png' %}" alt="" />
               </div>
             </div>
             <div class="col-xl-5 col-lg-5">
               <div class="trusted-caption">
                 <h2>¿ Quiénes Somos ?</h2>
-                <p>
-                  Somos un Banco comunal que ofrece productos y servicios 
+                <p style="text-align: justify;">
+                  Somos una caja comunal de ahorro y crédito  que ofrece productos y servicios 
                   financieros que contribuyen a satisfacer las necesidades 
                   de los socios, de la misma manera beneficiar en sus actividades 
                   productivas para el desarrollo económico y social
@@ -586,7 +589,7 @@
                         <div class="single-footer-caption mb-30">
                              <!-- logo -->
                             <div class="footer-logo">
-                                <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/ini.png' %}" alt=""></a>
+                                <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/caja.png' %}" alt="" style="width: 170px;height: 65px;"></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
@@ -595,7 +598,7 @@
                             </div>
                             <!-- social -->
                             <div class="footer-social">
-                                <a href="https://www.facebook.com/banc.pulin" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                                <a href="https://www.facebook.com/Cajapulingui" target="_blank"><i class="fab fa-facebook-square"></i></a>
                                 <a href="#"><i class="fab fa-twitter-square"></i></a>
                                 
                                <!--  <a href="#"><i class="fab fa-instagram-square"></i></a>
@@ -658,7 +661,7 @@
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-   &copy;<script>document.write(new Date().getFullYear());</script> Banc Pulingui<a href="https://www.facebook.com/banc.pulin" target="_blank"></a>
+   &copy;<script>document.write(new Date().getFullYear());</script> Caja Pulingui<a href="https://www.facebook.com/Cajapulingui" target="_blank"></a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>
@@ -670,7 +673,7 @@
    </footer>
    
 	<!-- JS here -->
-	
+	{% block scripts %}
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
 		<!-- Jquery, Popper, Bootstrap -->
@@ -707,7 +710,7 @@
         <script src="{% static './assets/js/main.js' %}"></script>
         
         <script src="{% static './assets/js/fresco.js' %}"></script>
-        {% block scripts %}
+        
           
         {% endblock scripts %}
         <style>

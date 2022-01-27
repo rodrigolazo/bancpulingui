@@ -7,12 +7,12 @@
   clear: both;
   cursor: pointer;
   display: block;
-  float: left;
+/*   float: left; */
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
-  height: 42px;
-  line-height: 40px;
+/*   height: 80px;
+  line-height: 40px; */
   outline: none;
   padding-left: 18px;
   padding-right: 30px;

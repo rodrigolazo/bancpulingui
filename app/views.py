@@ -595,6 +595,7 @@ def applicationForm(request):
     return render (request, 'solicitud/solicitud.html',context)
 
 def createRequest(request):
+    
 
     socio = request.POST.get('socioN')
     deudor = request.POST.get('deudor')
@@ -707,6 +708,134 @@ def createRequest(request):
     pagoPrestamo = request.POST.get('pagoPrestamo')
     otrosIngresos = request.POST.get('otrosIngresos')
     otrosGastos = request.POST.get('otrosGastos')
+
+    if len(compra)>=1:
+        compra=compra
+    else:
+        compra='0'
+    
+    if len(efectivo)>=1:
+        efectivo=efectivo
+    else:
+        efectivo='0'
+
+    if len(deudaBanco)>=1:
+        deudaBanco=deudaBanco
+    else:
+        deudaBanco='0'
+    
+    if len(cuentaCobrar)>=1:
+        cuentaCobrar=cuentaCobrar
+    else:
+        cuentaCobrar='0'
+    
+    if len(deudaCobrar)>=1:
+        deudaCobrar=deudaCobrar
+    else:
+        deudaCobrar='0'
+    
+    if len(mercaderia)>=1:
+        mercaderia=mercaderia
+    else:
+        mercaderia='0'
+    
+    if len(proveedores)>=1:
+        proveedores=proveedores
+    else:
+        proveedores='0'
+    
+    if len(terreno)>=1:
+        terreno=terreno
+    else:
+        terreno='0'
+    
+    if len(casaComercial)>=1:
+        casaComercial=casaComercial
+    else:
+        casaComercial='0'
+    
+    if len(casa)>=1:
+        casa=casa
+    else:
+        casa='0'
+    
+    if len(prestamista)>=1:
+        prestamista=prestamista
+    else:
+        prestamista='0'
+    
+    if len(vehiculo)>=1:
+        vehiculo=vehiculo
+    else:
+        vehiculo='0'
+    
+    if len(otrasdeudas)>=1:
+        otrasdeudas=otrasdeudas
+    else:
+        otrasdeudas='0'
+
+    if len(bienesEnseres)>=1:
+        bienesEnseres=bienesEnseres
+    else:
+        bienesEnseres='0'
+    
+    if len(otrosActivos)>=1:
+        otrosActivos=otrosActivos
+    else:
+        otrosActivos='0'
+    
+    if len(sueldoMensual)>=1:
+        sueldoMensual=sueldoMensual
+    else:
+        sueldoMensual='0'
+    
+    if len(gastosAlimentos)>=1:
+        gastosAlimentos=gastosAlimentos
+    else:
+        gastosAlimentos='0'
+    
+    if len(utilidadMensual)>=1:
+        utilidadMensual=utilidadMensual
+    else:
+        utilidadMensual='0'
+    
+    if len(gastosServicios)>=1:
+        gastosServicios=gastosServicios
+    else:
+        gastosServicios='0'
+    
+    if len(salarioConyuge)>=1:
+        salarioConyuge=salarioConyuge
+    else:
+        salarioConyuge='0'
+    
+    if len(gastoSalud)>=1:
+        gastoSalud=gastoSalud
+    else:
+        gastoSalud='0'
+    
+    if len(agricultorG)>=1:
+        agricultorG=agricultorG
+    else:
+        agricultorG='0'
+    
+    if len(pagoPrestamo)>=1:
+        pagoPrestamo=pagoPrestamo
+    else:
+        pagoPrestamo='0'
+    
+    if len(otrosIngresos)>=1:
+        otrosIngresos=otrosIngresos
+    else:
+        otrosIngresos='0'
+    
+    if len(otrosGastos)>=1:
+        otrosGastos=otrosGastos
+    else:
+        otrosGastos='0'
+
+    
+
     if request.method == 'POST':
         Credito.objects.create(socio=socio,deudor=deudor,garante=garante,
                                 numsocio=numsocio,fecha=fecha,monto=monto,

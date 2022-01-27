@@ -1,4 +1,4 @@
-{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+{% extends 'index.html' %} {% load static %} {% block titulo %} Caja Pulingui |
 Noticias {% endblock titulo%} 
 {% load crispy_forms_tags %}
 {% block container %}
@@ -102,11 +102,11 @@ Noticias {% endblock titulo%}
             </div>
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
-                    <aside class="single_sidebar_widget search_widget">
+                    <aside class="single_sidebar_widget search_widget"  style="background-color: rgb(241, 241, 241) !important;">
                         <div class="input-group">
                             <form id="searchForm" method="GET">
                                 {{myFilter.form|crispy}}
-                                <input class="btn btn-primary" type="submit" value="search">
+                                <input class="btn btn-primary" type="submit" value="Buscar">
                             </form>
                         </div><!-- /input-group -->
                         <div class="br"></div>
@@ -143,5 +143,15 @@ Noticias {% endblock titulo%}
 
 	}
 </script>
+
+<style type="text/css">
+    #div_id_tags >div {
+        max-height: 100px;
+        overflow-y: scroll;
+        border: 1px solid #888;
+        padding: 5px;
+        border-radius: 5px;
+    }
+</style>
 
 {% endblock container %}

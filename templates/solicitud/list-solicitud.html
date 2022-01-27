@@ -1,4 +1,4 @@
-{% extends 'index.html' %} {% load static %} {% block titulo %} Banc Pulingui |
+{% extends 'index.html' %} {% load static %} {% block titulo %} Caja Pulingui |
 lista {% endblock titulo%} {% block container %}
 
 <!-- slider Area Start-->
@@ -129,7 +129,7 @@ lista {% endblock titulo%} {% block container %}
   }
   .h_blog_item .h_blog_text .h_blog_text_inner {
     background: #fff;
-    padding: 75px 90px;
+    padding: 75px 50px;
     border-radius: 10px;
   }
   @media (max-width: 991px) {
@@ -143,6 +143,7 @@ lista {% endblock titulo%} {% block container %}
   }
   .h_blog_item .h_blog_text .h_blog_text_inner.right {
     margin-left: -104px;
+    margin-right: -104px;
     position: relative;
     z-index: 1;
     border: 10px solid #e9e9e9;
@@ -168,6 +169,74 @@ lista {% endblock titulo%} {% block container %}
   p{
       text-align: justify;
   }
+
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #28A745;
+    border-color: #28A745;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #002347;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
 </style>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+  $('#add-row').DataTable();
+  } );
+  </script>
+
+
+
 {% endblock container %}
+
+{% block scripts %}
+		<!-- All JS Custom Plugins Link Here here -->
+    <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+        <!-- Date Picker -->
+        <script src="{% static './assets/js/gijgo.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+		<script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>
+        
+        <script src="{% static './assets/js/fresco.js' %}"></script>
+
+{% endblock scripts %}
